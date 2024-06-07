@@ -25,7 +25,7 @@ class Car(models.Model):
     modification = models.TextField(max_length=500, blank=True, null=True)
     all_modification = models.TextField(max_length=500, blank=True, null=True)
     location = models.TextField(max_length=500, blank=True, null=True)
-    comment = models.TextField(max_length=500, blank=True, null=True)
+    comment = models.TextField(max_length=1000, blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     updated = models.DateTimeField(auto_now=True, blank=True, null=True)
 
