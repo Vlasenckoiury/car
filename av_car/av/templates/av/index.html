@@ -1,11 +1,267 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Av Car</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'av/css/main.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <script src="/static/av/js/base.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tangsa:wght@500&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <title>{% block title %}Av Car{% endblock %}</title>
 </head>
 <body>
 <ul>
+    <header class="header">
+      <div class="header__container">
+        <div class="header__logo">
+          <a class="header__logo-wrap">
+            <svg
+              aria-hidden="true"
+              height="27"
+              viewBox="0 0 82 27"
+              width="82"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="m66.337 4.606 5.298 11.287 5.413-11.287H82L71.406 26.488h-4.724l2.65-5.412-7.947-16.47h4.952zm-57.18-.46c5.087 0 9.27 3.916 9.27 9.098v8.638h-2.826l-1.583-.921c-1.357.921-3.052 1.382-4.748 1.382-5.087 0-9.27-3.916-9.27-9.099 0-5.182 4.07-9.098 9.157-9.098zm29.424 12.208a2.994 2.994 0 1 1 0 5.988 2.994 2.994 0 0 1 0-5.988zM47.22 0v5.527c1.38-.92 3.108-1.38 4.836-1.38 5.182 0 9.33 3.915 9.56 9.097 0 5.183-4.261 9.099-9.444 9.099-5.086 0-9.287-3.772-9.44-8.812l-.005-.287V0h4.493zM23.84 4.606l5.297 11.287 5.298-11.287h4.953L30.98 21.882h-3.8L18.772 4.606h5.068zM9.27 8.177c-2.713 0-4.974 2.303-4.974 5.067 0 2.765 2.26 5.068 4.974 5.068 2.713 0 4.861-2.303 4.974-5.068 0-2.764-2.26-5.067-4.974-5.067zm42.786 0c-2.763 0-5.066 2.303-5.066 5.067 0 2.765 2.303 5.068 5.066 5.068 2.764 0 4.953-2.303 5.067-5.068 0-2.764-2.303-5.067-5.067-5.067z"
+              ></path>
+            </svg>
+          </a>
+        </div>
+        <nav class="nav">
+          <ul class="nav__main">
+            <li class="nav__item nav__item--dropdown">
+              <a href="https://cars.av.by" class="nav__link">
+                <span class="nav__link-text">Объявления</span>
+              </a>
+              <div class="nav__dropdown">
+                <div class="nav__dropdown-section">
+                  <ul class="nav__dropdown-list">
+                    <li class="nav__dropdown-item">
+                      <a href="https://cars.av.by" class="nav__dropdown-link">
+                        <span class="nav__dropdown-text">
+                          Автомобили с пробегом
+                        </span>
+                      </a>
+                    </li>
+                    <li class="nav__dropdown-item">
+                      <a href="https://salon.av.by" class="nav__dropdown-link">
+                        <span class="nav__dropdown-text">Новые автомобили</span>
+                      </a>
+                    </li>
+                    <li class="nav__dropdown-item nav__dropdown-item--electro">
+                      <a
+                        href="https://cars.av.by/electrocars"
+                        class="nav__dropdown-link"
+                      >
+                        <span class="nav__dropdown-text">Электромобили</span>
+                      </a>
+                    </li>
+                    <li class="nav__dropdown-item">
+                      <a href="https://truck.av.by" class="nav__dropdown-link">
+                        <span class="nav__dropdown-text">Грузовой транспорт</span>
+                      </a>
+                    </li>
+                    <li class="nav__dropdown-item">
+                      <a href="https://moto.av.by" class="nav__dropdown-link">
+                        <span class="nav__dropdown-text">Мототехника</span>
+                      </a>
+                    </li>
+                    <li class="nav__dropdown-item">
+                      <a href="https://agro.av.by" class="nav__dropdown-link">
+                        <span class="nav__dropdown-text">Сельхозтехника</span>
+                      </a>
+                    </li>
+                    <li class="nav__dropdown-item">
+                      <a href="https://spec.av.by" class="nav__dropdown-link">
+                        <span class="nav__dropdown-text">Спецтехника</span>
+                      </a>
+                    </li>
+                    <li class="nav__dropdown-item">
+                      <a href="https://trailer.av.by" class="nav__dropdown-link">
+                        <span class="nav__dropdown-text">
+                          Прицепы и полуприцепы
+                        </span>
+                      </a>
+                    </li>
+                    <li class="nav__dropdown-item">
+                      <a href="https://bus.av.by" class="nav__dropdown-link">
+                        <span class="nav__dropdown-text">Автобусы</span>
+                      </a>
+                    </li>
+                    <li class="nav__dropdown-item">
+                      <a href="https://boat.av.by" class="nav__dropdown-link">
+                        <span class="nav__dropdown-text">Водный транспорт</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="nav__dropdown-section">
+                  <ul class="nav__dropdown-list">
+                    <li class="nav__dropdown-item">
+                      <a href="https://parts.av.by" class="nav__dropdown-link">
+                        <span class="nav__dropdown-text">
+                          Б/у запчасти для авто
+                        </span>
+                      </a>
+                    </li>
+                    <li class="nav__dropdown-item">
+                      <a
+                        href="https://parts.av.by/accessories"
+                        class="nav__dropdown-link"
+                      >
+                        <span class="nav__dropdown-text">
+                          Автотовары и расходники
+                        </span>
+                      </a>
+                    </li>
+                    <li class="nav__dropdown-item">
+                      <a href="https://koleso.av.by" class="nav__dropdown-link">
+                        <span class="nav__dropdown-text">Шины и диски</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li class="nav__item nav__item--dropdown">
+              <a class="nav__link" href="/vin">
+                <span class="nav__link-text">Сервисы</span>
+              </a>
+              <div class="nav__dropdown">
+                <div class="nav__dropdown-section">
+                  <ul class="nav__dropdown-list">
+                    <li class="nav__dropdown-item">
+                      <a class="nav__dropdown-link" href="/vin">
+                        <span class="nav__dropdown-text">Проверка VIN</span>
+                      </a>
+                    </li>
+                    <li class="nav__dropdown-item">
+                      <a class="nav__dropdown-link" href="/finance">
+                        <span class="nav__dropdown-text">Финансы</span>
+                      </a>
+                    </li>
+                    <li class="nav__dropdown-item">
+                      <a class="nav__dropdown-link" href="/ocenka-avto">
+                        <span class="nav__dropdown-text">
+                          Оценка стоимости автомобиля
+                        </span>
+                      </a>
+                    </li>
+                    <li class="nav__dropdown-item">
+                      <a class="nav__dropdown-link" href="/catalog">
+                        <span class="nav__dropdown-text">Каталог модификаций</span>
+                      </a>
+                    </li>
+                    <li class="nav__dropdown-item">
+                      <a class="nav__dropdown-link" href="/customs-calculator">
+                        <span class="nav__dropdown-text">
+                          Таможенный калькулятор
+                        </span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="/news">
+                <span class="nav__link-text">Журнал</span>
+              </a>
+            </li>
+            <li class="nav__item nav__item--dropdown">
+              <a href="https://av.by/pages/info" class="nav__link">
+                <span class="nav__link-text">Знания</span>
+              </a>
+              <div class="nav__dropdown">
+                <div class="nav__dropdown-section">
+                  <ul class="nav__dropdown-list">
+                    <li class="nav__dropdown-item">
+                      <a
+                        href="https://av.by/pages/kak_prodat_avtomobil"
+                        class="nav__dropdown-link"
+                      >
+                        <span class="nav__dropdown-text">Продажа автомобиля</span>
+                      </a>
+                    </li>
+                    <li class="nav__dropdown-item">
+                      <a
+                        href="https://av.by/pages/kak_pravilno_pokupat_avto"
+                        class="nav__dropdown-link"
+                      >
+                        <span class="nav__dropdown-text">Покупка автомобиля</span>
+                      </a>
+                    </li>
+                    <li class="nav__dropdown-item">
+                      <a
+                        href="https://av.by/pages/buy-sell"
+                        class="nav__dropdown-link"
+                      >
+                        <span class="nav__dropdown-text">Сделка купли-продажи</span>
+                      </a>
+                    </li>
+                    <li class="nav__dropdown-item">
+                      <a
+                        href="https://av.by/pages/taxes"
+                        class="nav__dropdown-link"
+                      >
+                        <span class="nav__dropdown-text">Налоги и сборы</span>
+                      </a>
+                    </li>
+                    <li class="nav__dropdown-item">
+                      <a
+                        href="https://av.by/pages/tehosmotr"
+                        class="nav__dropdown-link"
+                      >
+                        <span class="nav__dropdown-text">Техосмотр</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="/company">
+                <span class="nav__link-text">Услуги</span>
+              </a>
+            </li>
+            <li class="nav__item nav__item--alt">
+              <a class="nav__link" title="Проверка VIN" href="/vin">
+                <span class="nav__link-text">Проверка VIN</span>
+              </a>
+            </li>
+          </ul>
+          <ul class="nav__personal">
+            <li class="nav__item nav__item--login">
+              <a class="nav__link" href="http://127.0.0.1:8000/admin/" rel="nofollow">
+                <span class="nav__link-text">Войти</span>
+              </a>
+            </li>
+            <li class="nav__item nav__item--add">
+              <button
+                class="button button--primary button--block button--small"
+                type="button"
+                rel="nofollow"
+                id="myButton"
+              >
+                <span class="button__text">Подать объявление</span>
+              </button>
+              <script>
+                document.getElementById('myButton').addEventListener('click', function() {
+                  window.location.href = 'http://127.0.0.1:8000/admin/';
+                });
+              </script>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
     <h1>Все машины:</h1>
     <ul>
         {% for car in car %}
