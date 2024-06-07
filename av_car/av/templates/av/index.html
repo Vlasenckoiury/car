@@ -239,7 +239,7 @@
           </ul>
           <ul class="nav__personal">
             <li class="nav__item nav__item--login">
-              <a class="nav__link" href="http://127.0.0.1:8000/admin/" rel="nofollow">
+              <a class="nav__link" href="{% url 'logout' %}" rel="nofollow">
                 <span class="nav__link-text">Войти</span>
               </a>
             </li>
@@ -262,17 +262,8 @@
         </nav>
       </div>
     </header>
-    <h1>Все машины:</h1>
-    <ul>
-        {% for car in car %}
-            <li>{{ car.name }} - {{ car.description }} - {{ car.price }} - {{ car.price_usd }}
-                - {{ car.parameter }} - {{ car.description }} - {{ car.modification }} -
-                {{ car.all_modification }} - {{ car.location }} - {{ car.comment }}
-                {{car.created }} - {{ car.updated }} - {{ car.category }}</li>
-        {% empty %}
-            <li>No mymodels yet.</li>
-        {% endfor %}
-    </ul>
+    {% block content %} {% endblock %}
+    {% block car %} {% endblock %}
 </ul>
 </body>
 </html>

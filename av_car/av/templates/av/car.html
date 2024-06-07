@@ -1,0 +1,24 @@
+{% include "index.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Av Car{% endblock %}</title>
+</head>
+<body>
+    {% block car %}
+        <h1>Все машины:</h1>
+        <ul>
+            {% for car in car %}
+                <li>{{ car.name }} - {{ car.description }} - {{ car.price }} - {{ car.price_usd }}
+                    - {{ car.parameter }} - {{ car.description }} - {{ car.modification }} -
+                    {{ car.all_modification }} - {{ car.location }} - {{ car.comment }}
+                    {{car.created }} - {{ car.updated }} - {{ car.category }}</li>
+            {% empty %}
+                <li>No mymodels yet.</li>
+            {% endfor %}
+        </ul>
+    {% endblock %}
+</body>
+</html>
