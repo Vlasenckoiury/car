@@ -11,14 +11,13 @@
         <h1>Все машины:</h1>
         {% for car in cars %}
             <div class="car-card">
-                <img src="{% if car.image_url %}{{ car.image_url }}{% else %}/static/img/default_car.jpg{% endif %}" alt="{{ car.name }}">
                 <div class="car-content">
-                    <div class="car-title">{{ car.name }} - ${{ car.price_usd }}</div>
+                    <div class="car-title">{{ car.name }} - {{ car.price }} - ${{ car.price_usd }}</div>
                     <div class="car-description">{{ car.description }}</div>
                     <div class="car-details">
-                        <span><strong>Параметры:</strong> {{ car.parameter }}</span>
-                        <span><strong>Модификации:</strong> {{ car.modification }} ({{ car.all_modification }})</span>
-                        <span><strong>Местоположение:</strong> {{ car.location }}</span>
+                        <span><strong>Параметры:</strong> {{car.parameter}}</span>
+                        <span><strong>Модификации:</strong> {{car.modification}} {{car.all_modification}}</link>
+                        <span><strong>Местоположение:</strong> {{car.location}}</span>
                     </div>
                     <div class="car-footer">
                         Добавлено: {{ car.created|date:"d M Y" }} | Обновлено: {{ car.updated|date:"d M Y" }} | Категория: {{ car.category }}
