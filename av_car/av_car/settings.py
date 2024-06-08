@@ -14,6 +14,8 @@ env.read_env()
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env.str('SECRET_KEY')
 
+TOKEN_BOT = env.str('TOKEN_BOT')
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -136,3 +138,5 @@ STATICFILES_DIRS = [
     BASE_DIR / "av/static",
     BASE_DIR / "user/static",
 ]
+
+TELEGRAM_ID_ADMIN = int(os.getenv('TELEGRAM_ID_ADMIN'))
