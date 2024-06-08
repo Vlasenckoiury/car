@@ -13,6 +13,10 @@ class CarViewSet(viewsets.ModelViewSet):
     serializer_class = CarSerializer
 
 
+def home(request):
+    return render(request, 'index.html')
+
+
 def car_list(request):
-    car = Car.objects.all()
-    return render(request, 'av/index.html', {'car': car})
+    cars = Car.objects.all()
+    return render(request, 'av/car.html', {'cars': cars})

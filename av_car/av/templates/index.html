@@ -15,7 +15,6 @@
     <title>{% block title %}Av Car{% endblock %}</title>
 </head>
 <body>
-<ul>
     <header class="header">
       <div class="header__container">
         <div class="header__logo">
@@ -37,7 +36,7 @@
         <nav class="nav">
           <ul class="nav__main">
             <li class="nav__item nav__item--dropdown">
-              <a href="https://cars.av.by" class="nav__link">
+              <a href="{% url 'cars' %}" class="nav__link">
                 <span class="nav__link-text">Объявления</span>
               </a>
               <div class="nav__dropdown">
@@ -238,32 +237,86 @@
             </li>
           </ul>
           <ul class="nav__personal">
-            <li class="nav__item nav__item--login">
+            {% if user.is_authenticated %}
+              <a1 style="color: #5959d7;">Привет {{ user.username }}</a1>
+            {% else %}
+              <li class="nav__item nav__item--login">
               <a class="nav__link" href="{% url 'logout' %}" rel="nofollow">
                 <span class="nav__link-text">Войти</span>
               </a>
             </li>
+            {% endif %}
             <li class="nav__item nav__item--add">
-              <button
-                class="button button--primary button--block button--small"
-                type="button"
-                rel="nofollow"
-                id="myButton"
-              >
-                <span class="button__text">Подать объявление</span>
-              </button>
-              <script>
-                document.getElementById('myButton').addEventListener('click', function() {
-                  window.location.href = 'http://127.0.0.1:8000/admin/';
-                });
-              </script>
+              {% if user.is_authenticated %}
+                <button
+                  class="button button--primary button--block button--small"
+                  type="button"
+                  rel="nofollow"
+                  id="myButton"
+                >
+                  <span class="button__text">Подать объявление</span>
+                </button>
+                <script>
+                  document.getElementById('myButton').addEventListener('click', function() {
+                    window.location.href = 'http://127.0.0.1:8000/admin/';
+                  });
+                </script>
+              {% else %}
+                <button
+                  class="button button--primary button--block button--small"
+                  type="button"
+                  rel="nofollow"
+                  id="myButton1"
+                >
+                  <span class="button__text">Подать объявление</span>
+                </button>
+                <script>
+                  document.getElementById('myButton').addEventListener('click', function() {
+                    window.location.href="{% url 'logout' %}";
+                  });
+                </script>
+              {% endif %}
             </li>
           </ul>
         </nav>
       </div>
     </header>
-    {% block content %} {% endblock %}
-    {% block car %} {% endblock %}
-</ul>
+<reklama>
+  <a class="top-article__link" href="/news/rn-diler-o-pochti-novykh-avto-v-kredit">
+    <div class="top-article__image"><img alt="Фото для статьи &quot;«Надоела старая машина&nbsp;— обновлю!» Дилер о&nbsp;почти новых авто в&nbsp;кредит под 0% годовых в&nbsp;первые 180&nbsp;дней&quot;" src="https://avcdn.av.by/journalarticlepreviewmedium/0003/5039/4867.jpg" style="margin-left: 400px;width: 750px;height: 450px;"></div>
+    <div class="top-article__info"><h3 class="top-article__title" style="text-align: center;">«Надоела старая машина&nbsp;— обновлю!» Дилер о&nbsp;почти новых авто в&nbsp;кредит под 0% годовых в&nbsp;первые 180&nbsp;дней </h3><div class="top-article__views" style="text-align: center;"><svg aria-hidden="true" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg" fill="currentcolor"><path d="M4.7 9.714c1.1-1.2 2.3-2.2 3.7-2.8 4-2 8.4-.8 12.6 4.4l.5.6s-2.3 2.6-3 3.2c-4.9 4-10.2 4-15.1-2.6l-.4-.6.4-.6c.2-.3.6-.9 1.3-1.6zm8.654-1.611A2.007 2.007 0 0 0 12.2 9.914c0 1.1.9 2 2 2 .3 0 .5 0 .7-.1-.5 1.2-1.8 2.1-3.2 2.1-1.9 0-3.5-1.6-3.5-3.5 0-.486.105-.952.292-1.377A11.595 11.595 0 0 0 6.2 11.014c-.3.3-.6.6-.8.9 4 5 7.9 4.9 11.8 1.7.6-.5 1.7-1.7 1.7-1.7-1.935-2.211-3.778-3.414-5.546-3.811z"></path></svg>
+      <span>6 615</span>
+    </div>
+    </div>
+  </a>
+
+</reklama>
+<main>
+  {% block car %} {% endblock car %}
+</main>
+
+<div class="container">
+  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+    <p class="col-md-4 mb-0 text-body-secondary">© 2024 Company, Inc</p>
+
+    <img src="/static/av/img/logo.png" alt="Лого" style="width: 120px;height: 60px;"/>
+
+    <a href="https://t.me/Av_car_test_car_bot" target="_blank" title="Telegram">
+        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="blue" class="bi bi-telegram" viewBox="0 0 16 16">
+            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.287 5.906c-.778.324-2.334.994-4.666 2.01-.378.15-.577.298-.595.442-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294.26.006.549-.1.868-.32 2.179-1.471 3.304-2.214 3.374-2.23.05-.012.12-.026.166.016.047.041.042.12.037.141-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8.154 8.154 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629.093.06.183.125.27.187.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.426 1.426 0 0 0-.013-.315.337.337 0 0 0-.114-.217.526.526 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09z"/>
+        </svg>
+    </a>
+
+    <ul class="nav col-md-4 justify-content-end">
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Главная</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Характеристики</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Цены</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Вопросы и ответы</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">О нас</a></li>
+
+    </ul>
+  </footer>
+</div>
+
 </body>
 </html>

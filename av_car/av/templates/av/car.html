@@ -1,24 +1,32 @@
-{% include "index.html" %}
-{% load static %}
+{% extends 'index.html' %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Av Car{% endblock %}</title>
+    <title>{% block title %}Автомобили{% endblock %}</title>
 </head>
-<body>
-    {% block car %}
+
+{% block car %}
+    <div class="container">
         <h1>Все машины:</h1>
-        <ul>
-            {% for car in car %}
-                <li>{{ car.name }} - {{ car.description }} - {{ car.price }} - {{ car.price_usd }}
-                    - {{ car.parameter }} - {{ car.description }} - {{ car.modification }} -
-                    {{ car.all_modification }} - {{ car.location }} - {{ car.comment }}
-                    {{car.created }} - {{ car.updated }} - {{ car.category }}</li>
-            {% empty %}
-                <li>No mymodels yet.</li>
-            {% endfor %}
-        </ul>
-    {% endblock %}
-</body>
-</html>
+        {% for car in cars %}
+            <div class="car-card">
+                <img src="{% if car.image_url %}{{ car.image_url }}{% else %}/static/img/default_car.jpg{% endif %}" alt="{{ car.name }}">
+                <div class="car-content">
+                    <div class="car-title">{{ car.name }} - ${{ car.price_usd }}</div>
+                    <div class="car-description">{{ car.description }}</div>
+                    <div class="car-details">
+                        <span><strong>Параметры:</strong> {{ car.parameter }}</span>
+                        <span><strong>Модификации:</strong> {{ car.modification }} ({{ car.all_modification }})</span>
+                        <span><strong>Местоположение:</strong> {{ car.location }}</span>
+                    </div>
+                    <div class="car-footer">
+                        Добавлено: {{ car.created|date:"d M Y" }} | Обновлено: {{ car.updated|date:"d M Y" }} | Категория: {{ car.category }}
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <p>No cars yet.</p>
+        {% endfor %}
+    </div>
+{% endblock car %}

@@ -5,10 +5,11 @@ from django.urls import path, include
 from . import views
 
 router = DefaultRouter()
-router.register(r'car', CarViewSet, 'cars')
+router.register(r'car', CarViewSet, 'car')
 
 # urlpatterns = router.urls
 urlpatterns = [
-    path('', car_list, name='mymodel-list'),
+    path('', views.home),
+    path('cars', views.car_list, name="cars"),
     path('', include(router.urls)),
 ]
